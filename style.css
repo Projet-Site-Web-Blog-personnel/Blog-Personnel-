@@ -1,0 +1,63 @@
+header{
+    background: #5552F9;
+    margin: 0;
+    padding: 0;
+}
+.box{
+   position: absolute;
+   width: 250px;
+   height: 350px;
+   top: 61%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   border: 1px solid black;
+   border-radius: 10px;
+   padding: 40px;
+}
+.box .box-input{
+    position: absolute;
+    bottom: 25%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+}
+.box-button{
+   position: absolute;
+   bottom: 90px ;
+   left: 35px;
+}
+.btn{
+    display: inline-block;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.btn2{
+    border-radius: 10px;
+    width: 90px;
+    height: 25px;
+    background: #5552F9;
+    color: white;
+}
+.user-box{
+    margin-right: 40px;
+    margin-top: 40px;
+}
+.box .user-box input {
+    border: solid 1px;
+    border-radius: 5px;
+    width: 250px;
+    height: 15px;
+    font-size: 16px;
+    padding: 5px;  
+}
+.box .user-box label {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.forgot{
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
