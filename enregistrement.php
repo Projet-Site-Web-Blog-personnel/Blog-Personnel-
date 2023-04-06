@@ -37,32 +37,32 @@
             <form action="enregistrement.php" method="post" onsubmit="return checkPassword()">
                 <h2> Sign up </h2>
                 <div class="inputBox">
-                    <input type="text" name="email" required="required">
+                    <input type="text" name="email" required>
                     <Label> Email <Address></Address></Label>
                     <i></i>
                 </div>
-                <!-- <div class="inputBox">
-                    <input type="password" name="mot_de_passe" id="mot_de_passe1" required>
+                <div class="inputBox">
+                    <input type="password" name="mot_de_passe" id="mot_de_passe1" required="required">
                     <label for="">Fistname</label>
                     <i></i>
-                </div> -->
+                </div>
                 <div class="inputBox">
-                    <input type="password" name="mot_de_passe" id="mot_de_passe2" required="required">
+                    <input type="password" name="mot_de_passe" id="mot_de_passe2" required>
                     <label for=""> Password </label>
                     <i></i>
                 </div>
                 <div class="inputBox">
-                    <input type="text" name="Nom" required="required">
+                    <input type="text" name="Nom" required>
                     <label for=""> Name</label>
                     <i></i>
                 </div>
                 <div class="inputBox">
-                    <input type="text" name="Prenom" required="required">
-                    <label for=""> Confirm password</label>
+                    <input type="text" name="Prenom" required>
+                    <label for=""> Prenom</label>
                     <i></i>
                 </div>
                 <div class="inputBox">
-                    <input type="text" name="ville" required="required">
+                    <input type="text" name="ID_Role" required="required">
                     <label for=""> City </label>
                     <i></i>
                 </div>
@@ -75,51 +75,51 @@
         if (isset($_POST['email']) && isset($_POST['mot_de_passe']) && isset($_POST['ville']) && isset($_POST['Nom']) && isset($_POST['Prenom'])) {
 
             $email = $_POST['email'];
+
             $mot_de_passe = $_POST['mot_de_passe'];
+
             // $hashed_password = password_hash($mot_de_passe, PASSWORD_DEFAULT);
             $ville = $_POST['ville'];
+
             $Nom = $_POST['Nom'];
             $Prenom = $_POST['Prenom'];
             $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
-
-            $stmt = $db->prepare("INSERT INTO utilisateur (email,mot_de_passe,ville,Nom,Prenom) VALUES (:email, :mot_de_passe, :ville, :Nom, :Prenom)");
-
-            $stmt->bindParam(':mot_de_passe', $mot_de_passe);
+            $stmt = $db->prepare("INSERT INTO utilisateur (email,mot_de_passe,Nom,Prenom,ville) VALUES (:email, :mot_de_passe,:Nom, :Prenom, :ville)");
             $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':ville', $ville);
+            $stmt->bindParam(':mot_de_passe', $mot_de_passe);
             $stmt->bindParam(':Nom', $Nom);
             $stmt->bindParam(':Prenom', $Prenom);
-
-
-            $stmt->execute();
-
-            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-              <strong>C est nickel</strong> l ajout est OK.
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>';
-        }
-        if (isset($_POST['mot_de_passe']) && validatePassword($_POST['mot_de_passe'])) {
-        } else {
-            echo "Le mot de passe doit comporter au moins huit caractères, une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial.";
-        }
-
-        ?>
-
-        <?php
-        function validatePassword($password)
-        {
-            $uppercase = preg_match('@[A-Z]@', $password);
-            $lowercase = preg_match('@[a-z]@', $password);
-            $number    = preg_match('@[0-9]@', $password);
-            $specialChars = preg_match('@[^\w]@', $password);
-
-            if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
-                return false;
+            $stmt->bindParam(':ville', $ville);
+            if ($stmt->execute()) {
+                // Affichage d'un message de succès
+                echo "L'insertion a été effectuée avec succès !";
             } else {
-                return true;
+                // Affichage d'un message d'erreur
+                echo "Une erreur est survenue lors de l'insertion des données.";
             }
         }
+        // if (isset($_POST['mot_de_passe']) && validatePassword($_POST['mot_de_passe'])) {
+        // } else {
+        //     echo "Le mot de passe doit comporter au moins huit caractères, une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial.";
+        // }
+
         ?>
+
+        <!-- <?php
+                function validatePassword($password)
+                {
+                    $uppercase = preg_match('@[A-Z]@', $password);
+                    $lowercase = preg_match('@[a-z]@', $password);
+                    $number    = preg_match('@[0-9]@', $password);
+                    $specialChars = preg_match('@[^\w]@', $password);
+
+                    if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+                ?> -->
 
         </form> <!-- closing tag for form element -->
 
