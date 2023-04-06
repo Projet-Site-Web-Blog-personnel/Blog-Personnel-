@@ -22,6 +22,7 @@
             <h2>About us</h2>
         </div>
     </header>
+    <div class ="container">
     <div class="title2">
         <h1> WINOX</h1>
     </div>
@@ -33,44 +34,43 @@
     </div>
     <div class="box-sign"> 
 
-        <form action="enregistrement.php" method="post" onsubmit="return checkPassword()"> <!-- opening tag for form element -->
-
-            <h2> S'enregistrer </h2> 
+        <form action="enregistrement.php" method="post" onsubmit="return checkPassword()"> 
+            <h2> Sign up </h2> 
             <div class="inputBox"> 
                 <input type="text" name="email" required="required">
-                <span>Votre email</span> 
+                 <Label> Email <Address></Address></Label>
                 <i></i>
             </div>
             <div class="inputBox"> 
                 <input type="password" name="mot_de_passe" id="mot_de_passe1" required="required">
-                <span>Votre mot de passe</span> 
+                <label for="">Fistname</label>
                 <i></i>
             </div> 
             <div class="inputBox">
                 <input type="password" name="mot_de_passe" id="mot_de_passe2" required="required">
-                <span>Confirmer votre mot de passe</span> 
+              <label for=""> Password </label>
                 <i></i> 
             </div> 
             <div class="inputBox"> 
                 <input type="text" name="Nom" required="required">
-                <span>Votre nom</span> 
+                <label for=""> Name</label>
                 <i></i> 
             </div>
             <div class="inputBox"> 
                 <input type="text" name="Prenom" required="required">
-                <span>Votre prénom</span> 
+                <label for=""> Confirm password</label>
                 <i></i>
             </div>
             <div class="inputBox">
                 <input type="text" name="ID_Role" required="required">
-                <span>Rôle</span> 
+                <label for=""> City  </label>
                 <i></i> 
             </div>
             <div class="links"> 
                 <a href="pagelogin.php">Login</a>
             </div>
-            <input type="submit" value="Save"> 
-
+            <input type="submit" value="Create"> 
+            </div>
             <?php
             if (isset($_POST['email']) && isset($_POST['mot_de_passe']) && isset($_POST['ID_Role']) && isset($_POST['Nom']) && isset($_POST['Prenom'])) {
 
@@ -80,7 +80,6 @@
                 $ID_Role = $_POST['ID_Role'];
                 $Nom = $_POST['Nom'];
                 $Prenom = $_POST['Prenom'];
-
                 $db = new PDO('mysql:host=localhost;dbname=projetannuel;charset=utf8', 'root', '');
 
                 $stmt = $db->prepare("INSERT INTO utilisateur (email,mot_de_passe,ID_Role,Nom,Prenom) VALUES (:email, :mot_de_passe, :ID_Role, :Nom, :Prenom)");
