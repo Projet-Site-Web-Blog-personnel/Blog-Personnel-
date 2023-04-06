@@ -41,28 +41,28 @@
                     <Label> Email <Address></Address></Label>
                     <i></i>
                 </div>
-                <div class="inputBox">
-                    <input type="password" name="mot_de_passe" id="mot_de_passe1" required="required">
+                <!-- <div class="inputBox">
+                    <input type="password" name="mot_de_passe" id="mot_de_passe" >
                     <label for="">Fistname</label>
                     <i></i>
-                </div>
+                </div> -->
                 <div class="inputBox">
                     <input type="password" name="mot_de_passe" id="mot_de_passe2" required>
                     <label for=""> Password </label>
                     <i></i>
                 </div>
                 <div class="inputBox">
-                    <input type="text" name="Nom" required>
+                    <input type="text" name="nom" required>
                     <label for=""> Name</label>
                     <i></i>
                 </div>
                 <div class="inputBox">
-                    <input type="text" name="Prenom" required>
+                    <input type="text" name="prenom" required>
                     <label for=""> Prenom</label>
                     <i></i>
                 </div>
                 <div class="inputBox">
-                    <input type="text" name="ID_Role" required="required">
+                    <input type="text" name="ville" required="required">
                     <label for=""> City </label>
                     <i></i>
                 </div>
@@ -72,19 +72,16 @@
                 <input type="submit" value="Create">
         </div>
         <?php
-        if (isset($_POST['email']) && isset($_POST['mot_de_passe']) && isset($_POST['ville']) && isset($_POST['Nom']) && isset($_POST['Prenom'])) {
+        if (isset($_POST['email']) && isset($_POST['mot_de_passe']) && isset($_POST['ville']) && isset($_POST['nom']) && isset($_POST['prenom'])) {
 
             $email = $_POST['email'];
-
             $mot_de_passe = $_POST['mot_de_passe'];
-
             // $hashed_password = password_hash($mot_de_passe, PASSWORD_DEFAULT);
+            $Nom = $_POST['nom'];
+            $Prenom = $_POST['prenom'];
             $ville = $_POST['ville'];
-
-            $Nom = $_POST['Nom'];
-            $Prenom = $_POST['Prenom'];
             $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
-            $stmt = $db->prepare("INSERT INTO utilisateur (email,mot_de_passe,Nom,Prenom,ville) VALUES (:email, :mot_de_passe,:Nom, :Prenom, :ville)");
+            $stmt = $db->prepare("INSERT INTO utilisateur (email,mot_de_passe,nom,prenom,ville) VALUES (:email, :mot_de_passe,:nom, :prenom, :ville)");
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':mot_de_passe', $mot_de_passe);
             $stmt->bindParam(':Nom', $Nom);
