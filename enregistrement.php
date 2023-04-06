@@ -42,7 +42,7 @@
                     <i></i>
                 </div>
                 <!-- <div class="inputBox">
-                    <input type="password" name="mot_de_passe" id="" required>
+                    <input type="password" name="mot_de_passe" id="mot_de_passe1" required>
                     <label for="">P</label>
                     <i></i>
                 </div> -->
@@ -62,7 +62,7 @@
                     <i></i>
                 </div>
                 <div class="inputBox">
-                    <input type="text" name="ville" required>
+                    <input type="text" name="ville" required="required">
                     <label for=""> City </label>
                     <i></i>
                 </div>
@@ -76,14 +76,14 @@
 
             $email = $_POST['email'];
             $mot_de_passe = $_POST['mot_de_passe'];
-            $Nom = $_POST['nom'];
-            $Prenom = $_POST['prenom'];
+
+            // $hashed_password = password_hash($mot_de_passe, PASSWORD_DEFAULT);
             $ville = $_POST['ville'];
 
+            $Nom = $_POST['Nom'];
+            $Prenom = $_POST['Prenom'];
             $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
-
-            $stmt = $db->prepare("INSERT INTO utilisateur (email,mot_de_passe,nom,prenom,ville) VALUES (:email, :mot_de_passe, :nom, :prenom, :ville)");
-
+            $stmt = $db->prepare("INSERT INTO utilisateur (email,mot_de_passe,Nom,Prenom,ville) VALUES (:email, :mot_de_passe,:Nom, :Prenom, :ville)");
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':mot_de_passe', $mot_de_passe);
             $stmt->bindParam(':nom', $Nom);
