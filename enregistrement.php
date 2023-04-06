@@ -41,11 +41,11 @@
                     <Label> Email <Address></Address></Label>
                     <i></i>
                 </div>
-                <div class="inputBox">
-                    <input type="password" name="mot_de_passe" id="mot_de_passe1" required="required">
+                <!-- <div class="inputBox">
+                    <input type="password" name="mot_de_passe" id="mot_de_passe1" required>
                     <label for="">Fistname</label>
                     <i></i>
-                </div>
+                </div> -->
                 <div class="inputBox">
                     <input type="password" name="mot_de_passe" id="mot_de_passe2" required="required">
                     <label for=""> Password </label>
@@ -62,7 +62,7 @@
                     <i></i>
                 </div>
                 <div class="inputBox">
-                    <input type="text" name="ID_Role" required="required">
+                    <input type="text" name="ville" required="required">
                     <label for=""> City </label>
                     <i></i>
                 </div>
