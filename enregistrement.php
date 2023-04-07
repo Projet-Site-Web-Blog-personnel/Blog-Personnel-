@@ -37,32 +37,32 @@
             <form action="enregistrement.php" method="post" onsubmit="return checkPassword()">
                 <h2> Sign up </h2>
                 <div class="inputBox">
-                    <input type="text" name="email" required>
+                    <input type="email" name="email">
                     <Label> Email <Address></Address></Label>
                     <i></i>
                 </div>
                 <!-- <div class="inputBox">
-                    <input type="password" name="mot_de_passe" id="mot_de_passe1" required>
+                    <input type="password" name="mot_de_passe" id="">
                     <label for="">P</label>
                     <i></i>
                 </div> -->
                 <div class="inputBox">
-                    <input type="password" name="mot_de_passe" id="" required>
+                    <input type="password" name="mot_de_passe" id="">
                     <label for=""> Password </label>
                     <i></i>
                 </div>
                 <div class="inputBox">
-                    <input type="text" name="nom" required>
+                    <input type="text" name="Nom">
                     <label for=""> Name</label>
                     <i></i>
                 </div>
                 <div class="inputBox">
-                    <input type="text" name="prenom" required>
+                    <input type="text" name="Prenom">
                     <label for=""> Prenom</label>
                     <i></i>
                 </div>
                 <div class="inputBox">
-                    <input type="text" name="ville" required="required">
+                    <input type="text" name="ville">
                     <label for=""> City </label>
                     <i></i>
                 </div>
@@ -72,37 +72,26 @@
                 <input type="submit" value="Create">
         </div>
         <?php
-        if (isset($_POST['email']) && isset($_POST['mot_de_passe']) && isset($_POST['ville']) && isset($_POST['nom']) && isset($_POST['prenom'])) {
-
+        if (isset($_POST['email']) && isset($_POST['mot_de_passe']) && isset($_POST['ville']) && isset($_POST['Nom']) && isset($_POST['Prenom'])) {
             $email = $_POST['email'];
             $mot_de_passe = $_POST['mot_de_passe'];
-
-            // $hashed_password = password_hash($mot_de_passe, PASSWORD_DEFAULT);
             $ville = $_POST['ville'];
-
             $Nom = $_POST['Nom'];
             $Prenom = $_POST['Prenom'];
+
             $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
-            $stmt = $db->prepare("INSERT INTO utilisateur (email,mot_de_passe,Nom,Prenom,ville) VALUES (:email, :mot_de_passe,:Nom, :Prenom, :ville)");
-            $stmt->bindParam(':email', $email);
+
+            $stmt = $db->prepare("INSERT INTO utilisateur (email, mot_de_passe, Nom, Prenom,ville) VALUES (:email, :mot_de_passe, :Nom, :Prenom, :ville)");
             $stmt->bindParam(':mot_de_passe', $mot_de_passe);
-            $stmt->bindParam(':nom', $Nom);
-            $stmt->bindParam(':prenom', $Prenom);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':Prenom', $Prenom);
+            $stmt->bindParam(':Nom', $Nom);
             $stmt->bindParam(':ville', $ville);
 
-            if ($stmt->execute()) {
-                // Affichage d'un message de succès
-                echo "L'insertion a été effectuée avec succès !";
-            } else {
-                // Affichage d'un message d'erreur
-                echo "Une erreur est survenue lors de l'insertion des données.";
-            }
-        }
-        // if (isset($_POST['mot_de_passe']) && validatePassword($_POST['mot_de_passe'])) {
-        // } else {
-        //     echo "Le mot de passe doit comporter au moins huit caractères, une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial.";
-        // }
+            $stmt->execute();
 
+            echo "<script> alert('Utilisateur bien ajouté') </script>";
+        }
         ?>
 
         </form>
