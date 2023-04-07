@@ -37,7 +37,7 @@
             <form action="enregistrement.php" method="post" onsubmit="return checkPassword()">
                 <h2> Sign up </h2>
                 <div class="inputBox">
-                    <input type="text" name="email" required>
+                    <input type="mail" name="email" required>
                     <Label> Email <Address></Address></Label>
                     <i></i>
                 </div>
@@ -72,7 +72,7 @@
                 <input type="submit" value="Create">
         </div>
         <?php
-        if (isset($_POST['email']) && isset($_POST['mot_de_passe']) && isset($_POST['ville']) && isset($_POST['nom']) && isset($_POST['prenom'])) {
+        if (isset($_POST['email']) && isset($_POST['mot_de_passe']) &&  isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['ville']) ) {
 
             $email = $_POST['email'];
             $mot_de_passe = $_POST['mot_de_passe'];
@@ -118,11 +118,11 @@
                 }
                 ?> -->
 
-        </form> <!-- closing tag for form element -->
+        </form> 
 
 
 
-    </div> <!-- closing tag for box div -->
+    </div> 
 </body>
 
 </html>
