@@ -266,7 +266,7 @@ header{
 	width: 700px;
 	height: 450px;
     top: 60px;
-    left: 70%;
+    left: 45%;
 	background: black;
 	border-radius: 8px;
 	overflow: hidden;
@@ -351,7 +351,7 @@ header{
 
 .box-sign form .inputBox input {
 	position: relative;
-    width: 48%;
+    width: 100%;
 	padding: 20px 10px 10px;
 	background: transparent;
 	outline: none;
