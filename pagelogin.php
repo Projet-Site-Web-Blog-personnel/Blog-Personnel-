@@ -86,9 +86,9 @@
 
 
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-              <strong>C est nickel</strong> l ajout est OK.
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              <strong>Super</strong> you are in" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>';
+        header('Location: index.html');
     }
     ?>
 
