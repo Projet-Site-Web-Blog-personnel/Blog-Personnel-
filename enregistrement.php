@@ -72,7 +72,7 @@
                 <input type="submit" value="Create">
         </div>
         <?php
-        if (isset($_POST['email']) && isset($_POST['mot_de_passe']) && isset($_POST['ville']) && isset($_POST['nom']) && isset($_POST['prenom'])) {
+        if (isset($_POST['email']) && isset($_POST['mot_de_passe']) && isset($_POST['ville']) && isset($_POST['Nom']) && isset($_POST['Prenom'])) {
 
             $email = $_POST['email'];
             $mot_de_passe = $_POST['mot_de_passe'];
