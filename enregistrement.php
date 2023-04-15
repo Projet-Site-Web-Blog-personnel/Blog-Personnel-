@@ -76,6 +76,7 @@
 
             $email = $_POST['email'];
             $mot_de_passe = $_POST['mot_de_passe'];
+            $hashed_password = password_hash($mot_de_passe, PASSWORD_DEFAULT);
             $ville = $_POST['ville'];
             $Nom = $_POST['Nom'];
             $Prenom = $_POST['Prenom'];
@@ -84,6 +85,7 @@
 
             $stmt = $db->prepare("INSERT INTO utilisateur (email, mot_de_passe, Nom, Prenom,ville) VALUES (:email, :mot_de_passe, :Nom, :Prenom, :ville)");
             $stmt->bindParam(':mot_de_passe', $mot_de_passe);
+            $stmt->bindParam(':mot_de_passe', $hashed_password);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':Prenom', $Prenom);
             $stmt->bindParam(':Nom', $Nom);
