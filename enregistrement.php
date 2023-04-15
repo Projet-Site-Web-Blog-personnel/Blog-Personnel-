@@ -81,7 +81,6 @@
             $Prenom = $_POST['Prenom'];
 
             $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
-
             $stmt = $db->prepare("INSERT INTO utilisateur (email, mot_de_passe, Nom, Prenom,ville) VALUES (:email, :mot_de_passe, :Nom, :Prenom, :ville)");
             $stmt->bindParam(':mot_de_passe', $mot_de_passe);
             $stmt->bindParam(':email', $email);
